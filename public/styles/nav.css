@@ -12,13 +12,12 @@ nav {
   padding-right: 1.5em;
 }
 
-nav span {
+.nav-bar-title {
   font-family: 'Bungee', sans-serif;
 
 }
 
-/* .nav-bar {
-  display: flex;
-  justify-content: right;
+.nav-bar-content {
+  font-size: 20px;
 
-} */
+} 
