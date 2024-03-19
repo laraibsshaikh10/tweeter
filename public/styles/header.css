@@ -1,0 +1,40 @@
+header {
+  height: 400px;
+  width: 100%;
+  background-color: #829fcc;
+background-image: url("https://www.transparenttextures.com/patterns/diagmonds.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.avatar {
+  height: 200px; /* to adjust the size of avatar */
+  width: 205px; /* adjust the size of avatar*/
+  /* overflow: hidden;  */ /* to ensure that image does not overflow the container*/
+  /* border-radius: 50%; */
+
+}
+
+.avatar img {
+  height: 100%;
+  width: 100%;
+  /* object-fit: cover; ensures that the image covers the entire container */
+}
+
+.name {
+  margin-top: -20px; /* Adjust spacing between avatar and name */
+  margin-bottom: 15px; /* adjusts spacing under name and the bottom of header */
+  font-size: 20px;
+  color: white;
+} 
+header h2 {
+  margin: 0;
+}
+
+.container {
+  padding-top: calc(400px-120px);
+}

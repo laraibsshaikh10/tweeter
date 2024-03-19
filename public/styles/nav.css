@@ -10,14 +10,16 @@ nav {
   color: #FFFFFF;
   padding-left: 1.5em;
   padding-right: 1.5em;
+  position: fixed;
 }
 
-.nav-bar-title {
+.navbar-title {
+  font-size: 25px;
   font-family: 'Bungee', sans-serif;
 
 }
 
-.nav-bar-content {
+.navbar-content {
   font-size: 20px;
 
 } 
