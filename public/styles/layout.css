@@ -10,9 +10,7 @@ html {
   box-sizing: inherit;
 }
 
-/*
- * Global layout stuff
- */
+
 
 
 body {
@@ -25,3 +23,11 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+.container {
+  padding-top: calc(400px-120px);
+  width: 90%; /*to set container width to 90% of its parent element */
+  background-color: #f4f1ec; /*same color as the body*/
+  margin: 0 auto; /*to align the main container element in the center */
+}
+
