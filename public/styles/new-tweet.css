@@ -1,0 +1,27 @@
+
+.container {
+  padding-top: calc(400px-120px);
+  width: 90%; /*to set container width to 90% of its parent element */
+  background-color: inherit; /*same color as body, inherits the color from body*/
+  margin: 0 auto; /*to align the main container element in the center */
+}
+
+.tweet-textbox {
+  border: none; /* Remove default border */
+  border: 2px solid gray; /* Add border at the bottom */
+  border-radius: 10px; /* textbox with rounded corners */
+  padding: 5px;
+  width: 90%;  /*set width to the width of the container*/
+  height: 150px; /*set initial height of the box */
+  resize: vertical; /*allow the textbox to resize vertically*/
+}
+
+.submit-button {
+  display: flex;
+  justify-content: baseline;
+}
+
+output {
+  display: flex;
+  justify-content: end;
+}
