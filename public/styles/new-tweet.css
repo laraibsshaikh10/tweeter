@@ -16,10 +16,6 @@
   resize: vertical; /*allow the textbox to resize vertically*/
 }
 
-.submit-button {
-  display: flex;
-  justify-content: baseline;
-}
 
 output {
   display: flex;
