@@ -6,7 +6,7 @@
   margin: 0 auto; /*to align the main container element in the center */
 }
 
-.tweet-textbox {
+#tweet-text {
   border: none; /* Remove default border */
   border: 2px solid gray; /* Add border at the bottom */
   border-radius: 10px; /* textbox with rounded corners */
@@ -20,4 +20,8 @@
 output {
   display: flex;
   justify-content: end;
+}
+
+.invalid-input {
+  color: red;
 }
