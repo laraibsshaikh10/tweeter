@@ -1,4 +1,4 @@
-.previous-tweets {
+.tweet {
   border: solid 2px;
   border-radius: 10px;
   padding: 5px;
@@ -6,7 +6,7 @@
 
 }
 /* Add box shadow on hover */
-.previous-tweets:hover {
+.tweet:hover {
   cursor: pointer;
   background-color: #d8ddef;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
@@ -30,14 +30,6 @@ footer {
   border-radius: 90px; /* shows the profile picture as a circular icon */
   padding: 10px;
 }
-/* .tweet-footer:hover {
-  color: #4b5b95;
-}  */
-
-/* Change text color on hover */
-/* .tweet-footer a:hover {
-  color: yellow; /* Change color on hover 
-} */
 
 .icon {
   color: #4056a1; /* Default icon color */
