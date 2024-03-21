@@ -1,0 +1,60 @@
+.previous-tweets {
+  border: solid 2px;
+  border-radius: 10px;
+  padding: 5px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0); */
+
+}
+/* Add box shadow on hover */
+.previous-tweets:hover {
+  cursor: pointer;
+  background-color: #d8ddef;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+
+}
+
+.profile-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+footer {
+  border-top: 5px solid gray; /* creates a line on top of the icons*/
+  padding: 5px; /*creates space in between icons */
+  display: flex;
+  justify-content: flex-end;/*aligns icons to the left */
+}
+
+.profile-pic {
+  border-radius: 90px; /* shows the profile picture as a circular icon */
+  padding: 10px;
+}
+/* .tweet-footer:hover {
+  color: #4b5b95;
+}  */
+
+/* Change text color on hover */
+/* .tweet-footer a:hover {
+  color: yellow; /* Change color on hover 
+} */
+
+.icon {
+  color: #4056a1; /* Default icon color */
+  text-decoration: none; /* Removes the underline below the numbers */
+  margin-right: 10px; /* Adjust spacing between icon and text */
+  display: inline-flex; /* makes the icons and text display in a line */
+  align-items: center; /* Aligns both the icons and text vertically */
+}
+.icon:hover {
+  color: #788ed7; /* Change icon color on hover */
+}
+
+/* Style icon classes */
+.icon i {
+  margin-right: 5px; /* Adjust spacing between icon and text */
+}
+
+.icon i:hover {
+  color: #788ed7; /* Change icon color on hover */
+}
