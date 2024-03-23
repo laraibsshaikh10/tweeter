@@ -42,7 +42,7 @@
     }
   
     //calculate and return time in seconds if none of the above conditions are true
-    return Math.floor(seconds) + " seconds ago."; 
+    return Math.floor(sec) + " seconds ago."; 
   
   }
 
@@ -58,12 +58,12 @@ const createTweetElement = function(tweet) {
     <img class="profile-pic" src="./images/profilepicture.jpg" alt="Profile Picture" width="150px" height="150px">
 
     <div class="profile-info">
-      <h3>Joseph Smith</h3>
+      <h3>${tweet.user.name}</h3>
       <div class="">
-        <p>@JoeSmith121 · active ${timeAgo}</p>
+        <p>${tweet.user.handle} · active ${timeAgo}</p>
       </div>
     </div>
-  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+  <p> ${tweet.content.text} </p>
   </header>
   <footer class="tweet-footer">
     <a href="#" class="icon"><i class="fa-solid fa-message"></i> 20 </a> 
@@ -88,14 +88,6 @@ const tweetData = {
     },
   "created_at": 1461116232227
 }
-
-const $tweet = createTweetElement(tweetData);
-
-// Test / driver code (temporary)
-console.log($tweet); // to see what it looks like
-$('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
-
-
 // Fake data taken from initial-tweets.json
 const data = [
   {
@@ -122,19 +114,41 @@ const data = [
   }
 ]
 
+// A $( document ).ready() block.
+$( document ).ready(function() {
+  console.log( "ready!" );
+  const $tweet = createTweetElement(tweetData);
+  
+// Test / driver code (temporary)
+console.log($tweet); // to see what it looks like
+
+$('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
 
 //Implement renderTweets function
 const renderTweets = function (tweets) {
  
   //before rendering new tweets, empty out the tweets container in the main tag
-    $('.container').empty();
+    $('#tweets-container').empty();
 
   //insert each tweet created into the tweets container
   tweets.forEach(tweet => {
     const $tweet = createTweetElement(tweet);
-    $('.container').append($tweet);
+    $('#tweets-container').append($tweet);
   });
 };
 
 // Render the tweets data
 renderTweets(data);
+});
+
+
+
+// Test / driver code (temporary)
+// console.log($tweet); // to see what it looks like
+// $('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
+
+
+
+
+
+
