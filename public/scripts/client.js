@@ -4,52 +4,53 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-  //create a function to calculate the time difference between the current time and the time a tweet was created (how old the tweet actually is)
-  function timeDifference(date) {
-    //calculate difference between current time and the time the tweet was created and convert it to seconds
-    const sec = Math.floor((Date.now()- date) / 1000)
+  // //create a function to calculate the time difference between the current time and the time a tweet was created (how old the tweet actually is)
+  // function timeDifference(date) {
+  //   //calculate difference between current time and the time the tweet was created and convert it to seconds
+  //   const sec = Math.floor((Date.now()- date) / 1000)
     
-    //to calculate the time in years (31536000 seconds in a year)
-    let interval = Math.floor(sec / 31536000);
-    if (interval > 1) {
-      return interval + " years ago.";
-    }
+  //   //to calculate the time in years (31536000 seconds in a year)
+  //   let interval = Math.floor(sec / 31536000);
+  //   if (interval > 1) {
+  //     return interval + " years ago.";
+  //   }
   
-    //to calculate the time in months (2628000 seconds in a month)
-    interval = Math.floor(sec / 2628000);
-    if (interval > 1) {
-      return interval + " months ago.";
-    }
+  //   //to calculate the time in months (2628000 seconds in a month)
+  //   interval = Math.floor(sec / 2628000);
+  //   if (interval > 1) {
+  //     return interval + " months ago.";
+  //   }
   
-    //to calculate the time in days (86400 seconds in a day)
-    interval = Math.floor(sec / 86400);
-    if (interval > 1) {
-      return interval + " days ago.";
-    }
-  
-    
-    //to calculate the time in hours (3600 seconds in an hour)
-    interval = Math.floor(sec / 3600);
-    if (interval > 1) {
-      return interval + " hours ago.";
-    }
+  //   //to calculate the time in days (86400 seconds in a day)
+  //   interval = Math.floor(sec / 86400);
+  //   if (interval > 1) {
+  //     return interval + " days ago.";
+  //   }
   
     
-    //to calculate the time in minutes (60 seconds in a minute)
-    interval = Math.floor(sec / 60);
-    if (interval > 1) {
-      return interval + " minutes ago.";
-    }
+  //   //to calculate the time in hours (3600 seconds in an hour)
+  //   interval = Math.floor(sec / 3600);
+  //   if (interval > 1) {
+  //     return interval + " hours ago.";
+  //   }
   
-    //calculate and return time in seconds if none of the above conditions are true
-    return Math.floor(sec) + " seconds ago."; 
+    
+  //   //to calculate the time in minutes (60 seconds in a minute)
+  //   interval = Math.floor(sec / 60);
+  //   if (interval > 1) {
+  //     return interval + " minutes ago.";
+  //   }
   
-  }
+  //   //calculate and return time in seconds if none of the above conditions are true
+  //   return Math.floor(sec) + " seconds ago."; 
+  
+  // }
+import { format } from 'timeago.js';
+
 
 const createTweetElement = function(tweet) {
   //format the date from the tweet object
-  const creationTime = new Date(tweet.created_at);
-  const timeAgo = timeDifference(creationTime);
+  const timeAgo = timeago.format(tweet.created_at);
 
   //copy the article section with a class named, tweet from index.html
   let $tweet = $(`
@@ -88,31 +89,6 @@ const tweetData = {
     },
   "created_at": 1461116232227
 }
-// Fake data taken from initial-tweets.json
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
 
 // A $( document ).ready() block.
 $( document ).ready(function() {
@@ -138,9 +114,26 @@ $( document ).ready(function() {
         console.error('Data submission failed:', error);
       }
 
-    })
   });
 
+  //define a function called loadTweets that is responsible for fetching tweets from the http://localhost:8080/tweets page
+  const loadTweets = function() {
+    $.ajax({
+      method: 'GET',
+      url: 'http://localhost:8080/tweets',
+      dataType: 'json',
+      success: function(res) {
+        //upon successful execution, call renderTweets to render tweets to the DOM
+        renderTweets(res);
+      },
+      error: function(xhr, status, error) {
+        console.error("Error while fetching tweets:", error);
+      }
+    });
+  }
+  //call the function to load tweets while the page loads
+  loadTweets();
+  });
 
 
 
@@ -150,6 +143,7 @@ $( document ).ready(function() {
   console.log($tweet); // to see what it looks like
 
   $('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
+
 
   //Implement renderTweets function
   const renderTweets = function (tweets) {
