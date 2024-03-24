@@ -16,6 +16,11 @@
   resize: vertical; /*allow the textbox to resize vertically*/
 }
 
+#tweets-container {
+  margin: 20px 0;
+  padding: 20px 0;
+}
+
 
 output {
   display: flex;

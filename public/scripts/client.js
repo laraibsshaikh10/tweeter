@@ -117,28 +117,55 @@ const data = [
 // A $( document ).ready() block.
 $( document ).ready(function() {
   console.log( "ready!" );
+
+  //Add an event listener for submit and prevent its default behaviour.
+  $('.submit-button').on("click", function(event) {
+    //to prevent default submit behaviour
+    event.preventDefault();
+
+    //Serialize the form data and send it to the server as a query string.
+    const formData = $('#tweet-form').serialize();
+
+    //to send the serialized data as a query string to the server 
+    $.ajax({
+      method: 'POST',
+      url: '/tweets/',
+      data: 'formData',
+      success: function(res) {
+        console.log("Data successfully submitted.", res);
+      },
+      error: function(xhr, status, error) {
+        console.error('Data submission failed:', error);
+      }
+
+    })
+  });
+
+
+
+
   const $tweet = createTweetElement(tweetData);
   
-// Test / driver code (temporary)
-console.log($tweet); // to see what it looks like
+  // Test / driver code (temporary)
+  console.log($tweet); // to see what it looks like
 
-$('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
+  $('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
 
-//Implement renderTweets function
-const renderTweets = function (tweets) {
+  //Implement renderTweets function
+  const renderTweets = function (tweets) {
  
-  //before rendering new tweets, empty out the tweets container in the main tag
+    //before rendering new tweets, empty out the tweets container in the main tag
     $('#tweets-container').empty();
 
-  //insert each tweet created into the tweets container
-  tweets.forEach(tweet => {
-    const $tweet = createTweetElement(tweet);
-    $('#tweets-container').append($tweet);
-  });
-};
+    //insert each tweet created into the tweets container
+    tweets.forEach(tweet => {
+      const $tweet = createTweetElement(tweet);
+      $('#tweets-container').append($tweet);
+    });
+  };
 
-// Render the tweets data
-renderTweets(data);
+  // Render the tweets data
+  renderTweets(data);
 });
 
 

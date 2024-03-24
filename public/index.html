@@ -63,7 +63,7 @@
 
       <section class="new-tweet">
         <h2>Compose Tweet</h2> 
-        <form action ="/tweets/" method="POST">
+        <form id="tweet-form" action ="/tweets/" method="POST">
           <label for="tweet-text"><h3>My New Tweet!</h3> </label>
           <textarea name="text" id="tweet-text" placeholder="What are you humming about?" ></textarea> 
           <div>
@@ -74,30 +74,12 @@
         </form>
       </section>
       <br>
-      <!--styling the section in tweet.css-->
-      <!--since we consider the tweets an article, we will use article tag-->
-      <!-- <article class="tweet">
-        <header>
-          <img class="profile-pic" src="./images/profilepicture.jpg" alt="Profile Picture" width="150px" height="150px">
 
-          <div class="profile-info">
-            <h3>Joseph Smith</h3>
-            <div class="">
-              <p>@JoeSmith121 · active 3h ago</p>
-            </div>
-          </div>
-        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-        </header>
-        <footer class="tweet-footer">
-          <a href="#" class="icon"><i class="fa-solid fa-message"></i> 20 </a> 
-          <a href="#" class="icon"><i class="fa-solid fa-heart"></i> 10 </a> 
-          <a href="#" class="icon"><i class="fa-solid fa-flag"></i> 30 </a>
-        </footer>
-      </article> -->
-
-
-
-
+      <div id= "tweets-container">
+        <!--article tag in client.js-->
+      </div>
+      
+  
       <br><br><br><br><br><br><br><br><br>
     </main>
     
