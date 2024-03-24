@@ -4,50 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-  // //create a function to calculate the time difference between the current time and the time a tweet was created (how old the tweet actually is)
-  // function timeDifference(date) {
-  //   //calculate difference between current time and the time the tweet was created and convert it to seconds
-  //   const sec = Math.floor((Date.now()- date) / 1000)
-    
-  //   //to calculate the time in years (31536000 seconds in a year)
-  //   let interval = Math.floor(sec / 31536000);
-  //   if (interval > 1) {
-  //     return interval + " years ago.";
-  //   }
-  
-  //   //to calculate the time in months (2628000 seconds in a month)
-  //   interval = Math.floor(sec / 2628000);
-  //   if (interval > 1) {
-  //     return interval + " months ago.";
-  //   }
-  
-  //   //to calculate the time in days (86400 seconds in a day)
-  //   interval = Math.floor(sec / 86400);
-  //   if (interval > 1) {
-  //     return interval + " days ago.";
-  //   }
-  
-    
-  //   //to calculate the time in hours (3600 seconds in an hour)
-  //   interval = Math.floor(sec / 3600);
-  //   if (interval > 1) {
-  //     return interval + " hours ago.";
-  //   }
-  
-    
-  //   //to calculate the time in minutes (60 seconds in a minute)
-  //   interval = Math.floor(sec / 60);
-  //   if (interval > 1) {
-  //     return interval + " minutes ago.";
-  //   }
-  
-  //   //calculate and return time in seconds if none of the above conditions are true
-  //   return Math.floor(sec) + " seconds ago."; 
-  
-  // }
-import { format } from 'timeago.js';
-
-
 const createTweetElement = function(tweet) {
   //format the date from the tweet object
   const timeAgo = timeago.format(tweet.created_at);
@@ -56,7 +12,7 @@ const createTweetElement = function(tweet) {
   let $tweet = $(`
   <article class="tweet">
   <header>
-    <img class="profile-pic" src="./images/profilepicture.jpg" alt="Profile Picture" width="150px" height="150px">
+    <img class="profile-pic" src=${tweet.user.avatars} alt="Profile Picture" width="150px" height="150px">
 
     <div class="profile-info">
       <h3>${tweet.user.name}</h3>
@@ -106,7 +62,7 @@ $( document ).ready(function() {
     $.ajax({
       method: 'POST',
       url: '/tweets/',
-      data: 'formData',
+      data: formData,
       success: function(res) {
         console.log("Data successfully submitted.", res);
       },
@@ -120,7 +76,7 @@ $( document ).ready(function() {
   const loadTweets = function() {
     $.ajax({
       method: 'GET',
-      url: 'http://localhost:8080/tweets',
+      url: '/tweets',
       dataType: 'json',
       success: function(res) {
         //upon successful execution, call renderTweets to render tweets to the DOM
@@ -154,7 +110,8 @@ $( document ).ready(function() {
     //insert each tweet created into the tweets container
     tweets.forEach(tweet => {
       const $tweet = createTweetElement(tweet);
-      $('#tweets-container').append($tweet);
+      //use prepand to arrange tweets in the reverse chronological order (newest first)
+      $('#tweets-container').prepend($tweet);
     });
   };
 
