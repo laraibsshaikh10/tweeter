@@ -55,6 +55,19 @@ $( document ).ready(function() {
     //to prevent default submit behaviour
     event.preventDefault();
 
+    //Implement validation before sending the form data to the server. If any criterion of your validation is not met, then you should notify the user by rendering a message on the page.
+    const tweetMessage = $('#tweet-text').val().trim();
+    //if tweet is empty
+    if (!tweetMessage) {
+      alert("Please add your message before submitting.");
+      return;
+    }
+    //if tweetLength > 140 words
+    if (tweetMessage.length > 140) {
+      alert("You have exceeded the limit of maximum characters.");
+      return;
+    }
+
     //Serialize the form data and send it to the server as a query string.
     const formData = $('#tweet-form').serialize();
 
@@ -115,8 +128,6 @@ $( document ).ready(function() {
     });
   };
 
-  // Render the tweets data
-  renderTweets(data);
 });
 
 
