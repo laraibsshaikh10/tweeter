@@ -78,6 +78,11 @@ $( document ).ready(function() {
       data: formData,
       success: function(res) {
         console.log("Data successfully submitted.", res);
+        //call the function to load tweets while the page loads
+        loadTweets();
+
+        //upon successful submission of the tweet, clear the form
+        $('#tweet-text').val('');
       },
       error: function(xhr, status, error) {
         console.error('Data submission failed:', error);
@@ -100,8 +105,7 @@ $( document ).ready(function() {
       }
     });
   }
-  //call the function to load tweets while the page loads
-  loadTweets();
+  
   });
 
 
@@ -129,13 +133,6 @@ $( document ).ready(function() {
   };
 
 });
-
-
-
-// Test / driver code (temporary)
-// console.log($tweet); // to see what it looks like
-// $('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
-
 
 
 
