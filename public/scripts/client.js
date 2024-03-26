@@ -138,6 +138,9 @@ $( document ).ready(function() {
 
         //upon successful submission of the tweet, reset the character count
         $('.counter').text('140');
+
+        //hide the error message container after a successful submission
+        $('#error').hide();
       },
       error: function(xhr, status, error) {
         console.error('Data submission failed:', error);
