@@ -30,3 +30,13 @@ output {
 .invalid-input {
   color: red;
 }
+
+#error {
+  color: red; /*error displays in red */
+  /* border: 1px solid red; border around the message */
+  padding: 10px; /*adds space between border and content */
+  font-weight: bold; /*uses bold font */
+  background-color: aliceblue; /*background color for the box */
+  
+  
+}
