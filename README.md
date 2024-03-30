@@ -14,8 +14,12 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Dependencies
 
-- Express
 - Node 5.10.x or above
+- Body-parser: 1.15.2
+- Chance: 1.0.2
+- Express: 4.13.4
+- md5: 2.1.0
+- Timeago.js: 4.0.2
 
 ## Create Tweets
 - The user can type in a message with a maximum of 140 characters long and submit it.
@@ -23,7 +27,9 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Screenshots
 
-1. ![Screenshot of a compose a new tweet section.](./docs/composetweet.png)
+![Screenshot of a compose a new tweet section.](https://github.com/laraibsshaikh10/tweeter/blob/master/docs/composetweet.png)
 
-2. ![Screenshot of what other user's tweets.](./docs/tweets.png)
+![Screenshot of what other user's tweets.](https://github.com/laraibsshaikh10/tweeter/blob/master/docs/tweets.png)
 
+## Author
+Laraib Shaikh
