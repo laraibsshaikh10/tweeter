@@ -144,6 +144,9 @@ $( document ).ready(function() {
       },
       error: function(xhr, status, error) {
         console.error('Data submission failed:', error);
+
+        //to display the error to user in case the post request fails
+        $('#error').html('Something went wrong while fulfiling this request, please try again later').show();
       }
 
   });

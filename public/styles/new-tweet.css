@@ -4,6 +4,8 @@
   width: 90%; /*to set container width to 90% of its parent element */
   background-color: inherit; /*same color as body, inherits the color from body*/
   margin: 0 auto; /*to align the main container element in the center */
+  
+
 }
 
 #tweet-text {
