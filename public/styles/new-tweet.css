@@ -8,16 +8,6 @@
 
 }
 
-#tweet-text {
-  border: none; /* Remove default border */
-  border: 2px solid gray; /* Add border at the bottom */
-  border-radius: 10px; /* textbox with rounded corners */
-  padding: 5px;
-  width: 90%;  /*set width to the width of the container*/
-  height: 150px; /*set initial height of the box */
-  resize: vertical; /*allow the textbox to resize vertically*/
-}
-
 #tweets-container {
   margin: 20px 0;
   padding: 20px 0;
@@ -42,4 +32,31 @@ output {
   background-color: aliceblue; /*background color for the box */
   
   
+}
+
+.tweet-form-textarea {
+  background-color: #f4f1ec;
+  outline: 0;
+  border: none;
+  border-bottom: 5px solid gray;
+  width: 100%;
+}
+
+.tweet-button-container {
+  display: flex;  
+  justify-content: space-between;
+   padding: 5px;
+   align-items: center;
+}
+
+
+
+.submit-button {
+  display: flex;
+  border: none;
+  color: #FFFFFF;
+  font: bold;
+  background-color: #4056A1;
+  
+
 }

@@ -3,16 +3,28 @@
   .responsive-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
     gap: 50px;
   
   }
- 
 
+  .tweet-button-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
+  }
+ 
   .container {
     padding-top: 150px;
   }
- 
-  
    
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  /* Example styles */
+  nav {
+    background-image: url("https://www.transparenttextures.com/patterns/diagmonds.png");
+    background-color: transparent;
+  }
 }

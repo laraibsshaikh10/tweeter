@@ -2,9 +2,22 @@
   border: solid 2px;
   border-radius: 10px;
   padding: 5px;
+  margin-bottom: 15px;
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0); */
 
 }
+
+.avatar-container {
+  display: flex;
+  align-items: center;
+}
+
+.profile-info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 /* Add box shadow on hover */
 .tweet:hover {
   cursor: pointer;
@@ -13,17 +26,12 @@
 
 }
 
-.profile-info {
+.tweet-footer {
   display: flex;
   justify-content: space-between;
+  border-top: 5px solid gray;
   padding: 5px;
-}
-
-footer {
-  border-top: 5px solid gray; /* creates a line on top of the icons*/
-  padding: 5px; /*creates space in between icons */
-  display: flex;
-  justify-content: flex-end;/*aligns icons to the left */
+  align-items: center;
 }
 
 .profile-pic {
@@ -38,8 +46,9 @@ footer {
   display: inline-flex; /* makes the icons and text display in a line */
   align-items: center; /* Aligns both the icons and text vertically */
 }
+
 .icon:hover {
-  color: #788ed7; /* Change icon color on hover */
+  color: gray; /* Change icon color on hover */
 }
 
 /* Style icon classes */
@@ -48,5 +57,5 @@ footer {
 }
 
 .icon i:hover {
-  color: #788ed7; /* Change icon color on hover */
+  color: gray; /* Change icon color on hover */
 }

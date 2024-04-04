@@ -4,47 +4,46 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+//This method is best suited if the tweet element was created as a string literal (not a jQuery object).
+//Preventing XSS with Escaping
+const escape = function(str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
 const createTweetElement = function(tweet) {
   //format the date from the tweet object
   const timeAgo = timeago.format(tweet.created_at);
 
-  //This method is best suited if the tweet element was created as a string literal (not a jQuery object).
-  //Preventing XSS with Escaping
-  const escape = function (str) {
-    let div = document.createElement("div");
-    div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
-  };
-
-
   //copy the article section with a class named, tweet from index.html
   let $tweet = $(`
   <article class="tweet">
-  <header>
-    <img class="profile-pic" src=${escape(tweet.user.avatars)} alt="Profile Picture" width="150px" height="150px">
-
-    <div class="profile-info">
-      <h3>${escape(tweet.user.name)}</h3>
-      <div class="">
-        <p>${escape(tweet.user.handle)} · active ${timeAgo}</p>
+    <header class="profile-info-container">
+      <div class="avatar-container">
+        <img class="profile-pic" src=${tweet.user.avatars} alt="Profile Picture" width="150px" height="150px">
+        <h3>${tweet.user.name}</h3>
       </div>
-    </div>
-  <p> ${escape(tweet.content.text)} </p>
-  </header>
-  <footer class="tweet-footer">
-    <a href="#" class="icon"><i class="fa-solid fa-message"></i> 20 </a> 
-    <a href="#" class="icon"><i class="fa-solid fa-heart"></i> 10 </a> 
-    <a href="#" class="icon"><i class="fa-solid fa-flag"></i> 30 </a>
-  </footer>
-</article>
+      <p>${tweet.user.handle}</p>
+    </header>
+    <p> ${escape(tweet.content.text)} </p>
+    <footer class="tweet-footer">
+      <p> ${timeAgo} </p>
+      <div class="icon-container">
+        <a href="#" class="icon"><i class="fa-solid fa-message"></i> </a> 
+        <a href="#" class="icon"><i class="fa-solid fa-heart"></i> </a> 
+        <a href="#" class="icon"><i class="fa-solid fa-flag"></i> </a>
+      </div>
+    </footer>
+  </article>
 `);
   // ...
   return $tweet;
-}
+};
 
 //Implement renderTweets function
-const renderTweets = function (tweets) {
- 
+const renderTweets = function(tweets) {
+
   //before rendering new tweets, empty out the tweets container in the main tag
   $('#tweets-container').empty();
 
@@ -58,26 +57,24 @@ const renderTweets = function (tweets) {
 
 
 //define a function called loadTweets that is responsible for fetching tweets from the http://localhost:8080/tweets page
-  const loadTweets = function() {
-    $.ajax({
-      method: 'GET',
-      url: '/tweets',
-      dataType: 'json',
-      success: function(res) {
-        //upon successful execution, call renderTweets to render tweets to the DOM
-        renderTweets(res);
-      },
-      error: function(xhr, status, error) {
-        console.error("Error while fetching tweets:", error);
-      }
-    });
-  }
+const loadTweets = function() {
+  $.ajax({
+    method: 'GET',
+    url: '/tweets',
+    dataType: 'json',
+    success: function(res) {
+      //upon successful execution, call renderTweets to render tweets to the DOM
+      renderTweets(res);
+    },
+    error: function(xhr, status, error) {
+      console.error("Error while fetching tweets:", error);
+    }
+  });
+};
 
 // A $( document ).ready() block.
-$( document ).ready(function() {
-  console.log( "ready!" );
-  
-  
+$(document).ready(function() {
+
   //Add an event listener for submit and prevent its default behaviour.
   $('.submit-button').on("click", function(event) {
     //to prevent default submit behaviour
@@ -88,20 +85,20 @@ $( document ).ready(function() {
 
     //Implement validation before sending the form data to the server. If any criterion of your validation is not met, then you should notify the user by rendering a message on the page.
     const tweetMessage = $('#tweet-text').val().trim();
-    
+
     //create an empty array to store error messages
     const errorMessages = [];
 
     //if tweet is empty
     if (!tweetMessage) {
       errorMessages.push("Please add your message before submitting.");
-  
+
     }
 
     //if tweetLength > 140 words
     if (tweetMessage.length > 140) {
       errorMessages.push("You have exceeded the limit of maximum characters.");
-      
+
     }
 
     //if error occurs, display it in the error message container
@@ -149,22 +146,11 @@ $( document ).ready(function() {
         $('#error').html('Something went wrong while fulfiling this request, please try again later').show();
       }
 
+    });
+
   });
 
-  
-  });
-
-
-
-  const $tweet = createTweetElement(tweetData);
-  
-  // Test / driver code (temporary)
-  console.log($tweet); // to see what it looks like
-
-  $('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
-
-
-
+  loadTweets();
 });
 
 
